@@ -1,0 +1,87 @@
+# font-family = "SourceCodePro"
+font-family = "IBMPlexMono"
+# font-family = "JetBrains Mono"
+# font-family = "Fira Code"
+font-size = 22 
+
+theme = Cyberdyne 
+# theme = duskfox
+# theme = carbonfox
+# theme = iceberg-dark
+# theme = "Kanagawa Wave"
+# theme = LiquidCarbonTransparent
+# theme = synthwave
+# theme = Wez
+
+background-opacity = 1
+unfocused-split-fill = "Plum1"
+unfocused-split-opacity = .70
+# background = #1c1d2b
+window-padding-color = background
+window-padding-x = 8
+window-padding-y = 0,2
+
+split-divider-color = red
+
+macos-icon = custom-style
+macos-icon-ghost-color = purple
+macos-icon-screen-color = purple
+
+window-colorspace = display-p3 
+macos-titlebar-proxy-icon = hidden
+
+
+cursor-style-blink = false
+cursor-style = bar
+cursor-color = "Plum1"
+shell-integration-features = no-cursor
+window-decoration = true
+window-title-font-family = "Menlo Bold"
+
+
+copy-on-select = true
+font-thicken = true
+mouse-hide-while-typing = true
+window-padding-y = 0
+window-padding-x = 0
+window-padding-color = extend
+window-padding-balance = true
+window-save-state = always
+
+keybind = ctrl+shift+a=reload_config
+keybind = ctrl+shift+v=open_config
+
+keybind = ctrl+shift+x=close_surface
+keybind = ctrl+shift+c=clear_screen
+keybind = cmd+s=select_all
+
+keybind = cmd+c=copy_to_clipboard
+keybind = cmd+v=paste_from_selection
+keybind = cmd+v=paste_from_clipboard
+
+
+keybind = cmd+d=new_split:down
+keybind = cmd+u=new_split:up
+keybind = cmd+h=new_split:left
+keybind = cmd+l=new_split:right
+
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+l=goto_split:right
+keybind = ctrl+j=goto_split:bottom
+keybind = ctrl+k=goto_split:top
+
+keybind = ctrl+shift+l=resize_split:right,10
+keybind = ctrl+shift+h=resize_split:left,10
+keybind = ctrl+shift+k=resize_split:up,10
+keybind = ctrl+shift+j=resize_split:down,10
+
+keybind = ctrl+shift+t=new_tab
+keybind = ctrl+shift+u=previous_tab
+keybind = ctrl+shift+i=next_tab
+keybind = ctrl+shift+o=last_tab
+
+keybind = ctrl+shift=scroll_page_up
+keybind = ctrl+shift+d=scroll_page_down
+keybind = alt+u=scroll_to_top
+keybind = alt+d=scroll_to_bottom
+keybind = shift+enter=text:\n

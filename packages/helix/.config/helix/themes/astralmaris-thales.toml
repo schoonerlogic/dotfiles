@@ -1,0 +1,33 @@
+# AstralMaris — Thales (Architect Agent / Claude Chat)
+# Deep blue shift — the philosopher-navigator charting by starlight
+inherits = "astralmaris-merlin"
+
+"ui.statusline.normal" = { fg = "void", bg = "nebula", modifiers = ["bold"] }
+"ui.cursor.primary.normal" = { fg = "void", bg = "nebula" }
+
+[palette]
+void = "#141820"
+deep_void = "#0e1218"
+throne = "#1e2438"
+chamber = "#242e40"
+chamber_bright = "#30384a"
+
+foreground = "#9aa8c4"
+gold = "#b8c4da"
+starlight = "#a0a8b4"
+starlight_bright = "#b8c4d4"
+
+purple = "#a898c4"
+ceremonial = "#8a78a8"
+
+nebula = "#8a9ad8"
+nebula_dust = "#6a7ab8"
+cyan = "#88a8c0"
+
+moss = "#88a898"
+
+garnet = "#a86878"
+garnet_bright = "#c4889a"
+
+dust = "#404858"
+dust_bright = "#606878"

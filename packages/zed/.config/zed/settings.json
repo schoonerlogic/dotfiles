@@ -1,0 +1,90 @@
+{
+  "vim_mode": true,
+  "ui_font_size": 17.0,
+  "buffer_font_size": 18,
+  "buffer_font_family": "JetBrains Mono",
+  "autosave": "on_focus_change",
+  "format_on_save": "on",
+  "colorize_brackets": true,
+  "bottom_dock_layout": "left_aligned",
+  "active_pane_modifiers": {
+    "border_size": 1.0,
+    "inactive_opacity": 0.8,
+  },
+  "project_panel": {
+    "hide_hidden": false,
+  },
+  "file_scan_exclusions": [
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/.archive",
+  ],
+  "stable": {
+    "theme": "Tokyo Night Storm",
+  },
+  "preview": {
+    "theme": "Tokyo Night Storm",
+    "theme_overrides": {
+      "Tokyo Night Storm": {
+        "syntax": {
+          "title": { "color": "#f7768e", "font_weight": 700 },
+          "type": { "color": "#7aa2f7" },
+          "string": { "color": "#9ece6a" },
+          "comment": { "color": "#565f89", "font_style": "italic" },
+          "emphasis": { "color": "#bb9af7", "font_style": "italic" },
+          "link_text": { "color": "#73daca" },
+          "link_uri": { "color": "#b4f9f8" },
+        },
+      },
+    },
+    "experimental.theme_overrides": {
+      "status_bar.background": "#3d141a",
+      "title_bar.background": "#3d141a",
+      "pane.focused_border": "#574a03",
+      "agent_panel_font_size": 14,
+      "editor.document_highlight.bracket_background": "#ffea004d",
+      "players": [{ "selection": "#bab17b40" }],
+    },
+  },
+  "languages": {
+    "Markdown": {
+      "line_numbers": "off",
+      "soft_wrap": "preferred_line_length",
+      "git": { "git_gutter": "hide" },
+    },
+    "Rust": { "format_on_save": "on" },
+    "Terraform": { "format_on_save": "on" },
+  },
+  "language_models": {
+    "ollama": {
+      "api_url": "http://localhost:11434",
+      "available_models": [
+        {
+          "name": "llama3.1:8b",
+          "display_name": "llama3.1",
+          "max_tokens": 32768,
+          "capabilities": {
+            "tools": true,
+            "images": true,
+          },
+        },
+      ],
+    },
+  },
+  "agent_servers": {
+    "goose": {
+      "type": "custom",
+      "command": "goose",
+      "args": ["acp"],
+      "env": {
+        "GOOSE_MODEL": "glm-4.7",
+      },
+    },
+  },
+}

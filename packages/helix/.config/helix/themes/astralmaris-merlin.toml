@@ -1,0 +1,186 @@
+# AstralMaris — Merlin (Core)
+# Helix theme: the ancient king's command throne
+# Royal purple, faded gold, galaxy dust
+
+# === Syntax Highlighting ===
+
+"attribute" = "ceremonial"
+"comment" = { fg = "dust", modifiers = ["italic"] }
+"comment.documentation" = { fg = "nebula_dust", modifiers = ["italic"] }
+
+"constant" = "gold"
+"constant.builtin" = { fg = "gold", modifiers = ["bold"] }
+"constant.builtin.boolean" = "gold"
+"constant.character" = "garnet"
+"constant.character.escape" = "cyan"
+"constant.numeric" = "gold"
+
+"constructor" = "ceremonial"
+
+"function" = "starlight_bright"
+"function.builtin" = { fg = "starlight_bright", modifiers = ["bold"] }
+"function.macro" = "ceremonial"
+"function.method" = "starlight_bright"
+
+"keyword" = "purple"
+"keyword.control" = { fg = "purple", modifiers = ["bold"] }
+"keyword.control.conditional" = "purple"
+"keyword.control.exception" = "garnet"
+"keyword.control.import" = "nebula"
+"keyword.control.repeat" = "purple"
+"keyword.control.return" = { fg = "purple", modifiers = ["bold"] }
+"keyword.directive" = "ceremonial"
+"keyword.function" = "purple"
+"keyword.operator" = "nebula"
+"keyword.storage" = "purple"
+"keyword.storage.modifier" = "purple"
+"keyword.storage.type" = "purple"
+
+"label" = "cyan"
+
+"namespace" = "nebula_dust"
+
+"operator" = "dust_bright"
+
+"punctuation" = "dust"
+"punctuation.bracket" = "dust"
+"punctuation.delimiter" = "dust"
+"punctuation.special" = "nebula"
+
+"special" = "ceremonial"
+
+"string" = "moss"
+"string.regexp" = "cyan"
+"string.special" = "cyan"
+"string.special.path" = "moss"
+"string.special.symbol" = "gold"
+"string.special.url" = { fg = "nebula", underline = { style = "line" } }
+
+"tag" = "purple"
+"tag.attribute" = "gold"
+
+"type" = "gold"
+"type.builtin" = { fg = "gold", modifiers = ["bold"] }
+"type.enum.variant" = "gold"
+
+"variable" = "foreground"
+"variable.builtin" = { fg = "garnet_bright", modifiers = ["bold"] }
+"variable.other.member" = "starlight"
+"variable.parameter" = "dust_bright"
+
+"markup.heading" = { fg = "gold", modifiers = ["bold"] }
+"markup.heading.1" = { fg = "gold", modifiers = ["bold"] }
+"markup.heading.2" = { fg = "purple", modifiers = ["bold"] }
+"markup.heading.3" = { fg = "nebula", modifiers = ["bold"] }
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.link.text" = "nebula"
+"markup.link.url" = { fg = "cyan", underline = { style = "line" } }
+"markup.list" = "dust_bright"
+"markup.quote" = { fg = "dust", modifiers = ["italic"] }
+"markup.raw" = "moss"
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+
+"diff.plus" = "moss"
+"diff.minus" = "garnet"
+"diff.delta" = "nebula"
+
+# === UI Elements ===
+
+"ui.background" = { bg = "void" }
+"ui.text" = "foreground"
+"ui.text.focus" = "gold"
+"ui.text.inactive" = "dust"
+
+"ui.cursor" = { fg = "void", bg = "gold" }
+"ui.cursor.primary" = { fg = "void", bg = "gold" }
+"ui.cursor.primary.normal" = { fg = "void", bg = "gold" }
+"ui.cursor.primary.insert" = { fg = "void", bg = "moss" }
+"ui.cursor.primary.select" = { fg = "void", bg = "nebula" }
+"ui.cursor.match" = { bg = "chamber" }
+"ui.cursorline.primary" = { bg = "throne" }
+
+"ui.selection" = { bg = "chamber" }
+"ui.selection.primary" = { bg = "chamber_bright" }
+
+"ui.linenr" = { fg = "dust" }
+"ui.linenr.selected" = { fg = "gold", modifiers = ["bold"] }
+
+"ui.statusline" = { fg = "dust_bright", bg = "deep_void" }
+"ui.statusline.inactive" = { fg = "dust", bg = "deep_void" }
+"ui.statusline.normal" = { fg = "void", bg = "purple", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "void", bg = "moss", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "void", bg = "nebula", modifiers = ["bold"] }
+
+"ui.popup" = { fg = "foreground", bg = "deep_void" }
+"ui.window" = { fg = "dust" }
+"ui.help" = { fg = "foreground", bg = "deep_void" }
+
+"ui.menu" = { fg = "foreground", bg = "deep_void" }
+"ui.menu.selected" = { fg = "void", bg = "gold" }
+"ui.menu.scroll" = { fg = "dust", bg = "throne" }
+
+"ui.bufferline" = { fg = "dust", bg = "deep_void" }
+"ui.bufferline.active" = { fg = "gold", bg = "throne" }
+"ui.bufferline.background" = { bg = "deep_void" }
+
+"ui.virtual.ruler" = { bg = "throne" }
+"ui.virtual.whitespace" = "dust"
+"ui.virtual.indent-guide" = "dust"
+"ui.virtual.inlay-hint" = { fg = "dust" }
+"ui.virtual.wrap" = "dust"
+
+"ui.highlight" = { bg = "chamber" }
+"ui.highlight.frameline" = { bg = "#3d2840" }
+
+"ui.debug" = { fg = "garnet" }
+"ui.debug.breakpoint" = { fg = "garnet_bright" }
+
+"diagnostic.hint" = { underline = { color = "dust_bright", style = "curl" } }
+"diagnostic.info" = { underline = { color = "nebula", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "gold", style = "curl" } }
+"diagnostic.error" = { underline = { color = "garnet_bright", style = "curl" } }
+"diagnostic.unnecessary" = { modifiers = ["dim"] }
+"diagnostic.deprecated" = { modifiers = ["crossed_out"] }
+
+warning = "gold"
+error = "garnet_bright"
+info = "nebula"
+hint = "dust_bright"
+
+# === Palette ===
+# Named for the world they inhabit
+
+[palette]
+# Backgrounds — depths of the ship
+void = "#1e1228"
+deep_void = "#170d20"
+throne = "#261538"
+chamber = "#3d2650"
+chamber_bright = "#4a3060"
+
+# The king's metals — worn by time
+foreground = "#c9a96e"
+gold = "#dbc08a"
+starlight = "#b8a89a"
+starlight_bright = "#d4c8b8"
+
+# Royal purple — still the blood of kings
+purple = "#b88ec5"
+ceremonial = "#9b6ea8"
+
+# Galaxy through the viewport
+nebula = "#8a9ad4"
+nebula_dust = "#6e7fb8"
+cyan = "#88b8bc"
+
+# Living things aboard — moss, algae, memory
+moss = "#96b888"
+
+# Warnings from ancient systems
+garnet = "#a65d68"
+garnet_bright = "#c47a85"
+
+# The dust of everything — time's residue
+dust = "#5a4a68"
+dust_bright = "#7a6a88"

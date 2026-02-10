@@ -1,0 +1,32 @@
+# AstralMaris — Thales (Architect Agent / Claude Chat)
+# Spectral shift: deep blue, cosmic void
+# The philosopher-navigator, charting by starlight
+
+background = #141820
+foreground = #9aa8c4
+
+cursor-color = #a8b8d4
+cursor-text = #141820
+
+selection-background = #242e40
+selection-foreground = #b8c4da
+
+# ANSI Normal
+palette = 0=#0b0f18
+palette = 1=#a86878
+palette = 2=#6a8a78
+palette = 3=#b8a87a
+palette = 4=#6a7ab8
+palette = 5=#8a78a8
+palette = 6=#6a8aa0
+palette = 7=#a0a8b4
+
+# ANSI Bright
+palette = 8=#282e3d
+palette = 9=#c4889a
+palette = 10=#88a898
+palette = 11=#d4c09a
+palette = 12=#8a9ad8
+palette = 13=#a898c4
+palette = 14=#88a8c0
+palette = 15=#b8c4d4

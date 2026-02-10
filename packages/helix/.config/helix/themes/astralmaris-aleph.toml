@@ -1,0 +1,33 @@
+# AstralMaris — Aleph (Builder Agent / Claude CLI)
+# Green nebula shift — the engineer in the moss-lit holds
+inherits = "astralmaris-merlin"
+
+"ui.statusline.normal" = { fg = "void", bg = "moss", modifiers = ["bold"] }
+"ui.cursor.primary.normal" = { fg = "void", bg = "moss" }
+
+[palette]
+void = "#141e1a"
+deep_void = "#0e1812"
+throne = "#1e2e24"
+chamber = "#2a3d30"
+chamber_bright = "#344a3a"
+
+foreground = "#a8c49a"
+gold = "#c4dbb8"
+starlight = "#a0b0a0"
+starlight_bright = "#c4cabb"
+
+purple = "#a898b8"
+ceremonial = "#8a7a9a"
+
+nebula = "#88aaa0"
+nebula_dust = "#6a8a7e"
+cyan = "#88b8a8"
+
+moss = "#96b888"
+
+garnet = "#a65d68"
+garnet_bright = "#c47a85"
+
+dust = "#4a5848"
+dust_bright = "#6a7868"
