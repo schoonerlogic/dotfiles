@@ -1,41 +1,49 @@
-SHELL := /bin/sh
+shell := /bin/sh
 
-DOTFILES_DIR := $(HOME)/dotfiles
-BOOTSTRAP := $(DOTFILES_DIR)/bootstrap/sync-config.sh
+dotfiles_dir := $(HOME)/dotfiles
+bootstrap := $(dotfiles_dir)/bootstrap/sync-config.sh
 
-.PHONY: help sync stow sync-stow status check clean
+# stow ignore patterns (space-separated, passed to --ignore)
+stow_ignore := themes Cache logs "*.log"
+
+.phony: help sync stow sync-stow status check clean relink
 
 help:
-	@echo "Dotfiles commands:"
-	@echo "  make sync       - Sync allow-listed configs from ~/.config into packages/"
-	@echo "  make stow       - Symlink packages into $$HOME using stow"
-	@echo "  make sync-stow  - Sync + stow in one go"
-	@echo "  make status     - Show git status"
-	@echo "  make check      - Run sync + secret scan only (no stow)"
-	@echo "  make clean      - Show untracked/ignored files (no deletion)"
+	@echo "dotfiles commands:"
+	@echo "  make sync       - sync allow-listed configs from ~/.config into packages/"
+	@echo "  make stow       - symlink packages into $$home using stow"
+	@echo "  make sync-stow  - sync + stow in one go"
+	@echo "  make relink     - restow all packages (delete + recreate symlinks)"
+	@echo "  make status     - show git status"
+	@echo "  make check      - run sync + secret scan only (no stow)"
+	@echo "  make clean      - show untracked/ignored files (no deletion)"
 
 sync:
-	@echo "==> Syncing configs (no stow)"
-	@$(BOOTSTRAP)
+	@echo "==> syncing configs (no stow)"
+	@$(bootstrap)
 
 stow:
-	@echo "==> Stowing packages into $$HOME"
-	@command -v stow >/dev/null 2>&1 || (echo "stow not found. Install with: brew install stow" && exit 1)
-	@cd $(DOTFILES_DIR) && stow -d packages -t $(HOME) $$(ls -1 packages)
+	@echo "==> stowing packages into $$home"
+	@command -v stow >/dev/null 2>&1 || (echo "stow not found. install with: brew install stow" && exit 1)
+	@cd $(dotfiles_dir) && stow -d packages -t $(home) $(foreach pattern,$(stow_ignore),--ignore='$(pattern)') $$(ls -1 packages)
 
 sync-stow:
-	@echo "==> Syncing configs and stowing"
-	@RUN_STOW=1 $(BOOTSTRAP)
+	@echo "==> syncing configs and stowing"
+	@run_stow=1 $(bootstrap)
+
+relink:
+	@echo "==> restowing packages (delete + recreate symlinks)"
+	@command -v stow >/dev/null 2>&1 || (echo "stow not found. install with: brew install stow" && exit 1)
+	@cd $(dotfiles_dir) && stow -d packages -t $(home) --restow $(foreach pattern,$(stow_ignore),--ignore='$(pattern)') $$(ls -1 packages)
 
 check:
-	@echo "==> Running sync + safety checks (no stow)"
-	@SCAN_SECRETS=1 RUN_STOW=0 $(BOOTSTRAP)
+	@echo "==> running sync + safety checks (no stow)"
+	@scan_secrets=1 run_stow=0 $(bootstrap)
 
 status:
-	@echo "==> Git status"
-	@cd $(DOTFILES_DIR) && git status
+	@echo "==> git status"
+	@cd $(dotfiles_dir) && git status
 
 clean:
-	@echo "==> Untracked and ignored files (dry run)"
-	@cd $(DOTFILES_DIR) && git status --ignored
-
+	@echo "==> untracked and ignored files (dry run)"
+	@cd $(dotfiles_dir) && git status --ignored

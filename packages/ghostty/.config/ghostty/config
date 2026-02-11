@@ -1,17 +1,7 @@
-# font-family = "SourceCodePro"
-font-family = "IBMPlexMono"
-# font-family = "JetBrains Mono"
-# font-family = "Fira Code"
-font-size = 22 
+# config-file = /Users/proteus/.config/ghostty/agent-theme.conf
 
-theme = Cyberdyne 
-# theme = duskfox
-# theme = carbonfox
-# theme = iceberg-dark
-# theme = "Kanagawa Wave"
-# theme = LiquidCarbonTransparent
-# theme = synthwave
-# theme = Wez
+font-size = 16.5
+font-family = Monaspace Argon NF
 
 background-opacity = 1
 unfocused-split-fill = "Plum1"
