@@ -1,0 +1,38 @@
+#!/bin/bash
+set -euo pipefail
+
+THEME="${ASTRAL_THEME:-astralmaris-merlin}"
+TMP_DIR=$(mktemp -d "${TMPDIR:-/tmp}/helix-XXXXXX")
+trap 'rm -rf "$TMP_DIR"' EXIT
+
+mkdir -p "$TMP_DIR/helix"
+
+# Copy your real config if it exists, otherwise create minimal
+if [[ -f ~/.config/helix/config.toml ]]; then
+    # Copy and replace theme line, or add theme if not present
+    if grep -q '^theme' ~/.config/helix/config.toml; then
+        # Replace existing theme
+        sed "s/^theme = .*/theme = \"${THEME}\"/" ~/.config/helix/config.toml > "$TMP_DIR/helix/config.toml"
+    else
+        # Add theme line at top
+        echo "theme = \"${THEME}\"" > "$TMP_DIR/helix/config.toml"
+        cat ~/.config/helix/config.toml >> "$TMP_DIR/helix/config.toml"
+    fi
+else
+    # Minimal fallback
+    cat > "$TMP_DIR/helix/config.toml" << INNEREOF
+theme = "${THEME}"
+
+[editor]
+true-color = true
+cursorline = true
+INNEREOF
+fi
+
+# Symlink themes
+mkdir -p "$TMP_DIR/helix/themes"
+for theme in ~/.config/helix/themes/*.toml; do
+    [[ -f "$theme" ]] && ln -sf "$theme" "$TMP_DIR/helix/themes/"
+done
+
+XDG_CONFIG_HOME="$TMP_DIR" hx "$@"

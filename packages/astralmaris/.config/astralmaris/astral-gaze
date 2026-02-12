@@ -1,0 +1,63 @@
+#!/bin/zsh
+# Stellar Chroma — astral-gaze
+# Launches Ghostty with agent theme, passes theme to child processes
+
+set -euo pipefail
+
+DEFAULT_AGENT="merlin"
+VALID_AGENTS=(merlin aleph thales luban proteus)
+
+show_help() {
+    echo "Usage: astral-gaze [agent] [project]"
+    echo ""
+    echo "Examples:"
+    echo "  astral-gaze              # Default agent ($DEFAULT_AGENT) in \$HOME"
+    echo "  astral-gaze aleph        # Aleph agent in \$HOME"
+    echo "  astral-gaze thales myproject  # Thales in myproject worktree"
+    exit 0
+}
+
+[[ "${1:-}" == "-h" || "${1:-}" == "--help" ]] && show_help
+
+# Parse parameters
+AGENT=""
+PROJECT=""
+
+if [[ $# -eq 0 ]]; then
+    AGENT="$DEFAULT_AGENT"
+    WORKTREE="$HOME"
+elif [[ $# -eq 1 ]]; then
+    AGENT="${1}"
+    WORKTREE="$HOME"
+else
+    AGENT="${1}"
+    PROJECT="${2}"
+    WORKTREE="$HOME/projects/${PROJECT}/${PROJECT}-${AGENT}"
+fi
+
+# Validate agent
+if [[ ! " ${VALID_AGENTS[@]} " =~ " ${AGENT} " ]]; then
+    echo "Error: Unknown agent '${AGENT}'"
+    echo "Valid: ${VALID_AGENTS[*]}"
+    exit 1
+fi
+
+# Validate worktree if project specified
+if [[ -n "${PROJECT:-}" && ! -d "$WORKTREE" ]]; then
+    echo "Worktree not found: $WORKTREE"
+    echo "Create: astral-worktree ${PROJECT} ${AGENT} <branch>"
+    exit 1
+fi
+
+THEME="astralmaris-${AGENT}"
+
+echo "⟡ Gazing into ${AGENT}..."
+
+ghostty \
+  --theme="${THEME}" \
+  --title="${AGENT} // ${WORKTREE/#$HOME/~}" \
+  --working-directory="${WORKTREE}" \
+  --env="ASTRAL_THEME=${THEME}" \
+  -e zsh -li &>/dev/null &
+
+disown

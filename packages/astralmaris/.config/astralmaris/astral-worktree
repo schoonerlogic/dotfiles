@@ -1,0 +1,55 @@
+#!/bin/bash
+# Stellar Chroma — Robust Worktree Provisioning
+set -euo pipefail
+
+# --- Help Function ---
+show_help() {
+    echo "Usage: astral-worktree <project> <agent> <branch> [repo_path]"
+    echo ""
+    echo "Arguments:"
+    echo "  project    Name of the project (e.g., septagon)"
+    echo "  agent      Agent identity (merlin, aleph, thales, luban, proteus)"
+    echo "  branch     The git branch to check out or create"
+    echo "  repo_path  (Optional) Path to the bare repository."
+    echo "             Defaults to ~/projects/<project>/<project>.git"
+    echo ""
+    echo "Example:"
+    echo "  astral-worktree septagon thales feature/architecture-redesign"
+}
+
+# Check for help flags or missing arguments
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" || $# -lt 3 ]]; then
+    show_help
+    exit 0
+fi
+
+PROJECT="${1}"
+AGENT="${2}"
+BRANCH="${3}"
+# Default repo path based on your established hierarchy
+REPO_PATH="${4:-$HOME/projects/$PROJECT/$PROJECT.git}"
+
+PROJECT_DIR="$HOME/projects/$PROJECT"
+TARGET_DIR="$PROJECT_DIR/$PROJECT-$AGENT"
+
+# --- Validation ---
+if [[ ! -d "$REPO_PATH" ]]; then
+    echo "Error: Base repository not found at $REPO_PATH"
+    exit 1
+fi
+
+echo "⟡ Provisioning ${PROJECT} throne for ${AGENT}..."
+
+# Create project root if missing
+mkdir -p "$PROJECT_DIR"
+
+# Add worktree (creating/resetting branch from main)
+git -C "$REPO_PATH" worktree add -B "$BRANCH" "$TARGET_DIR" main
+
+# Inject Helix context
+mkdir -p "$TARGET_DIR/.helix"
+cat > "$TARGET_DIR/.helix/config.toml" << EOF
+theme = "astralmaris-$AGENT"
+EOF
+
+echo "✓ Worktree ready at $TARGET_DIR"
